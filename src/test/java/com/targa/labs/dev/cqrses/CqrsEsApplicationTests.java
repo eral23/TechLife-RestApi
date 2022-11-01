@@ -1,10 +1,10 @@
-package com.appbient.restapi;
+package com.targa.labs.dev.cqrses;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestapiApplicationTests {
+class CqrsEsApplicationTests {
 
 	@Test
 	void contextLoads() {
