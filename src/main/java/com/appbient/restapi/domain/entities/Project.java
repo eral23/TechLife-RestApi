@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,22 +21,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor  // Lombok
 @AllArgsConstructor // Lombok
 @Entity
-public class Publication {
-    @Id
-    @Column(name="id_publication")
-    private Integer id;
-    private String title;
-    private String content;
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_userOng")
+public class Project {
+	@Id
+	@Column(name="id_project")
+	private Integer id;
+	private String name;
+	private String description;
+	@ManyToOne
+	@JoinColumn(name="id_userOng")
+	@JsonProperty("user_id")
+	private UserOng userOng;
+	private String location;
+	private String mission;
+	private String functions;
+	@JsonProperty("photo_urls")
+	private String photoUrls;
+	private String requirements;
+	@OneToMany(mappedBy = "project")
     @JsonIgnore
-    private UserOng ongAuthor;
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_userVolunteer")
-    @JsonIgnore
-    private UserVolunteer volunteerAuthor;
-    @OneToMany(mappedBy = "publication",fetch = FetchType.LAZY)
-    private List<Comment> comments;
-    
-    
+	private List<Application> applications;
 }

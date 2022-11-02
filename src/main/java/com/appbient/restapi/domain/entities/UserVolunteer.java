@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,8 +22,14 @@ public class UserVolunteer {
     @Column(name="id_userVolunteer")
     private Integer id;
     private String name;
-    @OneToMany(mappedBy = "volunteerAuthor")
+    @OneToMany(mappedBy = "volunteerAuthor",fetch=FetchType.LAZY)
     private List<Publication> publications;
-    @OneToMany(mappedBy = "volunteerAuthor")
+    @OneToMany(mappedBy = "volunteerAuthor",fetch=FetchType.LAZY)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "applicant",fetch=FetchType.LAZY)
+    private List<Application> applications;
+    
+    public UserVolunteer(Integer id) {
+    	this.id=id;
+    }
 }
