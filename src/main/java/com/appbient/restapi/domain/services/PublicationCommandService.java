@@ -44,6 +44,7 @@ public class PublicationCommandService {
 				ServiceUtils.generateUniqueId(),
 				creationDTO.getTitle(),
 				creationDTO.getContent(),
+				creationDTO.getCreationDate(),
 				new UserOng(creationDTO.getOng_id()),
 				new UserVolunteer(creationDTO.getVolunteer_id()),
 				null
@@ -60,10 +61,9 @@ public class PublicationCommandService {
                     return ResponseEntity.badRequest().body(e.getMessage());
                 });
 	}
-	public CompletableFuture<ResponseEntity<String>> deletePublication(Publication publication){
-		DeletePublicationCommand command=new DeletePublicationCommand(
-				publication.getId()
-			);
+	public CompletableFuture<ResponseEntity<String>> deletePublication(int id){
+		DeletePublicationCommand command=new DeletePublicationCommand(id);
+		
 		try {
 			this.publicationProjection.deletePublication(command);
 		}catch(Exception e) {

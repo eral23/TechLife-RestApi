@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,20 +27,20 @@ public class PublicationController {
 	@Autowired
 	private PublicationQueryService publicationQueryService;
 
-	@PostMapping(value="create-publication")
+	@PostMapping(value="/publications")
 	public CompletableFuture<ResponseEntity<String>> createPublication(@RequestBody PublicationCreationDTO creationDTO){
 		return this.publicationCommandService.createPublication(creationDTO);
 	}
 	
-	@PostMapping(value="delete-publication")
-	public CompletableFuture<ResponseEntity<String>> deletePublication(@RequestBody Publication publication){
-		return this.publicationCommandService.deletePublication(publication);
+	@DeleteMapping(value="/publications/{id}")
+	public CompletableFuture<ResponseEntity<String>> deletePublication(@PathVariable("id") int id){
+		return this.publicationCommandService.deletePublication(id);
 	}
-	@GetMapping(value="publications")
-	public List<Publication> getPublicationByUser(){
+	@GetMapping(value="/publications")
+	public List<Publication> getPublications(){
 		return this.publicationQueryService.findAll();
 	}
-	@GetMapping(value="publications/{type}/{id}")
+	@GetMapping(value="/publications/{type}/{id}")
 	public List<Publication> getPublicationByUser(@PathVariable("type")String userType,@PathVariable("id")int userId){
 		return this.publicationQueryService.findAllByUser(userType,userId);
 	}

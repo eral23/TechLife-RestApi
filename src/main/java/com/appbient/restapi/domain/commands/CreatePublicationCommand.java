@@ -1,5 +1,6 @@
 package com.appbient.restapi.domain.commands;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
@@ -20,7 +21,9 @@ public class CreatePublicationCommand {
 	private Integer publicationId;
     private String title;
     private String content;
+    private LocalDateTime creationDate;
     private UserOng ongAuthor;
     private UserVolunteer volunteerAuthor;
     private List<Comment> comments;
+    
 }

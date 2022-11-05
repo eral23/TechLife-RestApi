@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.appbient.restapi.application.controllers.dto.ProjectCreationDTO;
 import com.appbient.restapi.domain.entities.Project;
-import com.appbient.restapi.domain.entities.Publication;
 import com.appbient.restapi.domain.services.ProjectCommandService;
 import com.appbient.restapi.domain.services.ProjectQueryService;
 
@@ -27,31 +27,36 @@ public class ProjectController {
 	@Autowired
 	private ProjectCommandService projectCommandService;
 	@Autowired
-	private ProjectQueryService publicationQueryService;
+	private ProjectQueryService projectQueryService;
 
+	@CrossOrigin
 	@PostMapping()
 	public CompletableFuture<ResponseEntity<String>> createProject(@RequestBody ProjectCreationDTO creationDTO){
 		return this.projectCommandService.createProject(creationDTO);
 	}
-	
+	@CrossOrigin
 	@DeleteMapping(value="/{id}")
 	public CompletableFuture<ResponseEntity<String>> deleteProject(@PathVariable int id){
 		return this.projectCommandService.deleteProject(id);
 	}
+	@CrossOrigin
 	@GetMapping
 	public List<Project> getAllProjects(){
-		return this.publicationQueryService.findAll();
+		return this.projectQueryService.findAll();
 	}
+	@CrossOrigin
 	@GetMapping(value="/{id}")
 	public Project getProjectById(@PathVariable("id")int id){
-		return this.publicationQueryService.findById(id);
+		return this.projectQueryService.findById(id);
 	}
+	@CrossOrigin
 	@GetMapping(value="/user/{id}")
 	public List<Project> getProjectByUser(@PathVariable("id")int userId){
-		return this.publicationQueryService.findByUser(userId);
+		return this.projectQueryService.findByUser(userId);
 	}
+	@CrossOrigin
 	@GetMapping(value="/search")
 	public List<Project> getProjectByUser(@RequestParam("keyword")String keyword){
-		return this.publicationQueryService.findByKeyword(keyword);
+		return this.projectQueryService.findByKeyword(keyword);
 	}
 }

@@ -37,6 +37,7 @@ public class ProjectProjection {
 			command.getProjectId(),
 			command.getName(),
 			command.getDescription(),
+			command.getCreationDate(),
 			command.getUserOng(),
 			command.getLocation(),
 			command.getMission(),

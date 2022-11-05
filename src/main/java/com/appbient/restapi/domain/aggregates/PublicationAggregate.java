@@ -37,6 +37,7 @@ public class PublicationAggregate {
 				command.getPublicationId(),
 				command.getTitle(),
 				command.getContent(),
+				command.getCreationDate(),
 				command.getOngAuthor(),
 				command.getVolunteerAuthor(),
 				command.getComments()

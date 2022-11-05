@@ -1,5 +1,6 @@
 package com.appbient.restapi.domain.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +28,9 @@ public class Publication {
     private Integer id;
     private String title;
     private String content;
+    @JsonProperty("creation_date")
+    @Column(name="creation_date")
+    private LocalDateTime creationDate;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_userOng")
     @JsonIgnore
@@ -35,7 +40,5 @@ public class Publication {
     @JsonIgnore
     private UserVolunteer volunteerAuthor;
     @OneToMany(mappedBy = "publication",fetch = FetchType.LAZY)
-    private List<Comment> comments;
-    
-    
+    private List<Comment> comments; 
 }

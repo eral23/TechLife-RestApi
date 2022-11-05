@@ -1,11 +1,11 @@
 package com.appbient.restapi.domain.events;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.appbient.restapi.domain.entities.Comment;
 import com.appbient.restapi.domain.entities.UserOng;
 import com.appbient.restapi.domain.entities.UserVolunteer;
-
 
 import lombok.Data;
 
@@ -14,6 +14,7 @@ public class PublicationCreatedEvent {
 	private final Integer id;
     private final String title;
     private final String content;
+    private final LocalDateTime creationDate;
     private final UserOng ongAuthor;
     private final UserVolunteer volunteerAuthor;
     private final List<Comment> comments;

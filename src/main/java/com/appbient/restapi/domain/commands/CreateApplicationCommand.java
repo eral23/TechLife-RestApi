@@ -4,25 +4,20 @@ import java.time.LocalDateTime;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-import com.appbient.restapi.domain.entities.UserOng;
+import com.appbient.restapi.domain.entities.Project;
+import com.appbient.restapi.domain.entities.UserVolunteer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data               // Lombok
 @NoArgsConstructor  // Lombok
 @AllArgsConstructor // Lombok
-public class CreateProjectCommand {
+public class CreateApplicationCommand {
 	@TargetAggregateIdentifier
-	private Integer projectId;
-	private String name;
-	private String description;
+	private Integer id;
+    private Integer status;
     private LocalDateTime creationDate;
-	private UserOng userOng;
-	private String location;
-	private String mission;
-	private String functions;
-	private String photoUrls;
-	private String requirements;
+	private Project project;
+	private UserVolunteer applicant;
 }

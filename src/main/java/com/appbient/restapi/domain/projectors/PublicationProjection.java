@@ -53,6 +53,7 @@ public class PublicationProjection {
 					command.getPublicationId(),
 					command.getTitle(),
 					command.getContent(),
+					command.getCreationDate(),
 					command.getOngAuthor(),
 					null,
 					command.getComments()
@@ -63,6 +64,7 @@ public class PublicationProjection {
 					command.getPublicationId(),
 					command.getTitle(),
 					command.getContent(),
+					command.getCreationDate(),
 					null,
 					command.getVolunteerAuthor(),
 					command.getComments()

@@ -1,6 +1,6 @@
 package com.appbient.restapi.application.controllers.dto;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import lombok.Value;
 
@@ -8,6 +8,7 @@ import lombok.Value;
 public class ProjectCreationDTO {
 	private String name;
 	private String description;
+	private LocalDateTime creationDate;
 	private Integer ong_id;
 	private String location;
 	private String mission;

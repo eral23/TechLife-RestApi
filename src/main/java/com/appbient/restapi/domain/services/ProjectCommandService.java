@@ -37,6 +37,7 @@ public class ProjectCommandService {
 				ServiceUtils.generateUniqueId(),
 				creationDTO.getName(),
 				creationDTO.getDescription(),
+				creationDTO.getCreationDate(),
 				new UserOng(creationDTO.getOng_id()),
 				creationDTO.getLocation(),
 				creationDTO.getMission(),
