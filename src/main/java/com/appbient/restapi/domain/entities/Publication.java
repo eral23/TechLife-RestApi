@@ -41,4 +41,8 @@ public class Publication {
     private UserVolunteer volunteerAuthor;
     @OneToMany(mappedBy = "publication",fetch = FetchType.LAZY)
     private List<Comment> comments; 
+    
+    public Publication(Integer id) {
+    	this.id=id;
+    }
 }

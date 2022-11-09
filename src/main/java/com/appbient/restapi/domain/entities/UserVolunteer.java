@@ -25,8 +25,10 @@ public class UserVolunteer {
     private Integer id;
     private String name;
     @OneToMany(mappedBy = "volunteerAuthor",fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Publication> publications;
     @OneToMany(mappedBy = "volunteerAuthor",fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Comment> comments;
     @OneToMany(mappedBy = "applicant",fetch=FetchType.LAZY)
     @JsonIgnore

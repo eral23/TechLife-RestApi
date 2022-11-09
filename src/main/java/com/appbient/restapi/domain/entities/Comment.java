@@ -2,6 +2,8 @@ package com.appbient.restapi.domain.entities;
 
 
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +28,8 @@ public class Comment {
     @Column(name="id_comment")
     private Integer id;
     private String content;
+    @Column(name="creation_date")
+    private LocalDateTime creationDate;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="userOng_id")
     private UserOng ongAuthor;
@@ -32,5 +38,6 @@ public class Comment {
     private UserVolunteer volunteerAuthor;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_publication")
+    @JsonIgnore
     private Publication publication;
 }
