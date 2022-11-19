@@ -10,10 +10,10 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import com.appbient.restapi.domain.commands.CreateProjectCommand;
 import com.appbient.restapi.domain.commands.DeleteProjectCommand;
-import com.appbient.restapi.domain.commands.DeletePublicationCommand;
+import com.appbient.restapi.domain.commands.UpdateProjectCommand;
 import com.appbient.restapi.domain.events.ProjectCreatedEvent;
 import com.appbient.restapi.domain.events.ProjectDeletedEvent;
-import com.appbient.restapi.domain.events.PublicationCreatedEvent;
+import com.appbient.restapi.domain.events.ProjectUpdatedEvent;
 import com.appbient.restapi.domain.events.PublicationDeletedEvent;
 
 import lombok.AllArgsConstructor;
@@ -54,6 +54,23 @@ public class ProjectAggregate {
                 )
         );
     }
+    @CommandHandler
+    public void handle(UpdateProjectCommand command) {
+        AggregateLifecycle.apply(
+                new ProjectUpdatedEvent(
+                        command.getId(),
+                        command.getName(),
+                        command.getDescription(),
+                        command.getCreationDate(),
+                        command.getUserOng(),
+                        command.getLocation(),
+                        command.getMission(),
+                        command.getFunctions(),
+                        command.getPhotoUrls(),
+                        command.getRequirements()
+                )
+        );
+    }
     @EventSourcingHandler
     public void on(ProjectCreatedEvent event) {
     	this.id=event.getProjectId();
@@ -63,5 +80,8 @@ public class ProjectAggregate {
     public void on(ProjectDeletedEvent event) {
     	markDeleted();
     }
-    
+    @EventSourcingHandler
+    public void on(ProjectUpdatedEvent event) {
+    	
+    }
 }

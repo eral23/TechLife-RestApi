@@ -24,6 +24,13 @@ public class UserOng {
     @Column(name="id_userOng")
     private Integer id;
     private String name;
+    private String email;
+    private String password;
+    private Integer role;
+    
+    private String locale;
+    private String description;
+    
     @OneToMany(mappedBy = "ongAuthor", fetch=FetchType.LAZY)
     @JsonIgnore
     private List<Publication> publications;
@@ -33,5 +40,14 @@ public class UserOng {
     
     public UserOng(Integer id) {
     	this.id=id;
+    }
+    public UserOng(Integer id, String name, String email, String password, Integer role, String locale, String description) {
+    	this.id=id;
+    	this.name=name;
+    	this.email=email;
+    	this.password=password;
+    	this.role=role;
+    	this.locale=locale;
+    	this.description=description;
     }
 }

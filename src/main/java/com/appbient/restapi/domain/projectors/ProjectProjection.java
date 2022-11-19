@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.appbient.restapi.domain.commands.CreateProjectCommand;
 import com.appbient.restapi.domain.commands.DeleteProjectCommand;
+import com.appbient.restapi.domain.commands.UpdateProjectCommand;
 import com.appbient.restapi.domain.entities.Project;
 import com.appbient.restapi.domain.entities.Publication;
 import com.appbient.restapi.domain.entities.UserOng;
@@ -56,6 +57,28 @@ public class ProjectProjection {
 			this.projectRepository.delete(project);
 		}else {
 			throw new ResourceNotFoundException("El proyecto con id " + command.getProjectId() + " No Existe en la bd");
+		}
+	}
+	
+	public void updatePublication(UpdateProjectCommand command) {
+		Optional<Project> optionalProject= this.projectRepository.findById(command.getId());
+		if(optionalProject.isPresent()) {
+			Project project=new Project(
+					command.getId(),
+					command.getName(),
+					command.getDescription(),
+					command.getCreationDate(),
+					command.getUserOng(),
+					command.getLocation(),
+					command.getMission(),
+					command.getFunctions(),
+					command.getPhotoUrls(),
+					command.getRequirements(),
+					null
+					);
+			this.projectRepository.save(project);
+		}else {
+			throw new ResourceNotFoundException("El proyecto con id " + command.getId() + " No Existe en la bd");
 		}
 	}
 }

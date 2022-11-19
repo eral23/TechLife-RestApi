@@ -24,6 +24,17 @@ public class UserVolunteer {
     @Column(name="id_userVolunteer")
     private Integer id;
     private String name;
+    private String email;
+    private String password;
+    private Integer role;
+    
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    private Integer genre;
+    private Integer experience;
+    private String dni;
+    
     @OneToMany(mappedBy = "volunteerAuthor",fetch=FetchType.LAZY)
     @JsonIgnore
     private List<Publication> publications;
@@ -36,5 +47,18 @@ public class UserVolunteer {
     
     public UserVolunteer(Integer id) {
     	this.id=id;
+    }
+    public UserVolunteer(Integer id, String name, String email, String password,Integer role, String firstName, String lastName, Integer age, Integer genre, Integer experience, String dni) {
+    	this.id=id;
+    	this.name=name;
+    	this.email=email;
+    	this.password=password;
+    	this.role=role;
+    	this.firstName=firstName;
+    	this.lastName=lastName;
+    	this.age=age;
+    	this.genre=genre;
+    	this.experience=experience;
+    	this.dni=dni;
     }
 }

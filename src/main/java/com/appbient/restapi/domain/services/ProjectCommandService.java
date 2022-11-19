@@ -10,6 +10,7 @@ import com.appbient.restapi.application.controllers.dto.ProjectCreationDTO;
 import com.appbient.restapi.domain.commands.CreateProjectCommand;
 import com.appbient.restapi.domain.commands.DeleteProjectCommand;
 import com.appbient.restapi.domain.commands.DeletePublicationCommand;
+import com.appbient.restapi.domain.commands.UpdateProjectCommand;
 import com.appbient.restapi.domain.entities.Project;
 import com.appbient.restapi.domain.entities.UserOng;
 import com.appbient.restapi.domain.exceptions.ResourceNotFoundException;
@@ -66,6 +67,32 @@ public class ProjectCommandService {
 		}
 		
 		return this.commandGateway.send(command).thenApply(it->ResponseEntity.ok("publicacion eliminada con exito"))
+				.exceptionally(e -> {
+                    return ResponseEntity.badRequest().body(e.getMessage());
+                });
+	}
+	
+	public CompletableFuture<ResponseEntity<String>> updateProject(Project project){
+		UpdateProjectCommand command= new UpdateProjectCommand(
+					project.getId(),
+					project.getName(),
+					project.getDescription(),
+					project.getCreationDate(),
+					project.getUserOng(),
+					project.getLocation(),
+					project.getMission(),
+					project.getFunctions(),
+					project.getPhotoUrls(),
+					project.getRequirements()
+				);
+		
+		try {
+			this.projectProjection.updatePublication(command);
+		}catch(Exception e) {
+			throw e;
+		}
+		
+		return this.commandGateway.send(command).thenApply(it->ResponseEntity.ok("publicacion actualizada con exito"))
 				.exceptionally(e -> {
                     return ResponseEntity.badRequest().body(e.getMessage());
                 });

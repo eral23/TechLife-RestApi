@@ -42,8 +42,7 @@ public class ApplicationController {
 	
 	@CrossOrigin
 	@PutMapping(value="/{id}")
-	public CompletableFuture<ResponseEntity<String>> deleteApplication(@PathVariable("id")Integer id, @RequestParam("status") Integer status){
-        System.out.println("HOla " + (status));
+	public CompletableFuture<ResponseEntity<String>> updateApplication(@PathVariable("id")Integer id, @RequestParam("status") Integer status){
 		return this.applicationCommandService.evaluateApplication(id,status);
 	}
 	
