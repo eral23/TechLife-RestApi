@@ -1,5 +1,7 @@
 package com.appbient.restapi.domain.events;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +20,7 @@ public class UserVolunteerCreatedEvent {
     
     private String firstName;
     private String lastName;
-    private Integer age;
+    private Date birthDate;
     private Integer genre;
     private Integer experience;
     private String dni;

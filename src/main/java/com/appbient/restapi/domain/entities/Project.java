@@ -35,6 +35,8 @@ public class Project {
 	@JsonProperty("ong_id")
 	private UserOng userOng;
 	private String location;
+	private double lat;
+	private double lng;
 	private String mission;
 	private String functions;
 	@JsonProperty("photo_urls")

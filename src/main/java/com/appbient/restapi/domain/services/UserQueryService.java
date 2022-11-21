@@ -29,7 +29,8 @@ public class UserQueryService {
 	}
 	public UserVolunteer findUserVolunteerByEmail(String email) {
 		List<UserVolunteer> users=userVolunteerRepository.findUserByEmail(email);
-		
+		System.out.println("hola");
+		System.out.println(users.size());
 		if(users.size()!=1) {
 			throw new ResourceNotFoundException("No se encontro un usuario con ese correo o mas de un usuario tienen el mismo correo");
 		}else {

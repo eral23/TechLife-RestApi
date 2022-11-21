@@ -13,6 +13,8 @@ public class ProjectUpdatedEvent {
     private final LocalDateTime creationDate;
     private final UserOng userOng;
 	private final String location;
+	private final double lat;
+	private final double lng;
 	private final String mission;
 	private final String functions;
 	private final String photoUrls;

@@ -24,11 +24,12 @@ public class UserController {
 	private UserCommandService userCommandService;
 	@Autowired
 	private UserQueryService userQueryService;
-	
+	@CrossOrigin
 	@PostMapping(value="/volunteer/signup")
 	public CompletableFuture<ResponseEntity<String>> createUserVolunteer(@RequestBody UserVolunteerCreationDTO creationDTO){
 		return this.userCommandService.createUserVolunteer(creationDTO);
 	}
+	@CrossOrigin
 	@PostMapping(value="/ong/signup")
 	public CompletableFuture<ResponseEntity<String>> createUserOng(@RequestBody UserOngCreationDTO creationDTO){
 		return this.userCommandService.createUserOng(creationDTO);

@@ -10,6 +10,6 @@ import com.appbient.restapi.domain.entities.UserOng;
 import com.appbient.restapi.domain.entities.UserVolunteer;
 
 public interface UserVolunteerRepository extends JpaRepository<UserVolunteer, Integer>{
-    @Query(value="select * from uservolunteer u where u.email like %:email%",nativeQuery = true)
+    @Query(value="select * from uservolunteer u where u.email like :email",nativeQuery = true)
     List<UserVolunteer> findUserByEmail(String email);
 }

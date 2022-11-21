@@ -1,5 +1,7 @@
 package com.appbient.restapi.domain.commands;
 
+import java.util.Date;
+
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +21,7 @@ public class CreateUserVolunteerCommand {
     
     private String firstName;
     private String lastName;
-    private Integer age;
+    private Date birthDate;
     private Integer genre;
     private Integer experience;
     private String dni;

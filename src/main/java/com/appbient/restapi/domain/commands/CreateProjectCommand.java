@@ -21,6 +21,8 @@ public class CreateProjectCommand {
     private LocalDateTime creationDate;
 	private UserOng userOng;
 	private String location;
+	private double lat;
+	private double lng;
 	private String mission;
 	private String functions;
 	private String photoUrls;

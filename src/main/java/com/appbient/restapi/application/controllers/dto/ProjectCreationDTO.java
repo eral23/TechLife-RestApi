@@ -11,6 +11,8 @@ public class ProjectCreationDTO {
 	private LocalDateTime creationDate;
 	private Integer ong_id;
 	private String location;
+	private double lat;
+	private double lng;
 	private String mission;
 	private String functions;
 	private String photo_urls;

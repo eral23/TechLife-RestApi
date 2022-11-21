@@ -31,7 +31,7 @@ public class UserVolunteerAggregate {
     		    command.getRole(),
     		    command.getFirstName(),
     		    command.getLastName(),
-    		    command.getAge(),
+    		    command.getBirthDate(),
     		    command.getGenre(),
     		    command.getExperience(),
     		    command.getDni()

@@ -52,7 +52,7 @@ public class UserCommandService {
 			    1,
 			    userVolunteerDTO.getFirstName(),
 			    userVolunteerDTO.getLastName(),
-			    userVolunteerDTO.getAge(),
+			    userVolunteerDTO.getBirthDate(),
 			    userVolunteerDTO.getGenre(),
 			    userVolunteerDTO.getExperience(),
 			    userVolunteerDTO.getDni()

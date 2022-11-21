@@ -1,11 +1,10 @@
 package com.appbient.restapi.domain.entities;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -30,7 +29,7 @@ public class UserVolunteer {
     
     private String firstName;
     private String lastName;
-    private Integer age;
+    private Date birthDate;
     private Integer genre;
     private Integer experience;
     private String dni;
@@ -48,7 +47,7 @@ public class UserVolunteer {
     public UserVolunteer(Integer id) {
     	this.id=id;
     }
-    public UserVolunteer(Integer id, String name, String email, String password,Integer role, String firstName, String lastName, Integer age, Integer genre, Integer experience, String dni) {
+    public UserVolunteer(Integer id, String name, String email, String password,Integer role, String firstName, String lastName, Date birthDate, Integer genre, Integer experience, String dni) {
     	this.id=id;
     	this.name=name;
     	this.email=email;
@@ -56,7 +55,7 @@ public class UserVolunteer {
     	this.role=role;
     	this.firstName=firstName;
     	this.lastName=lastName;
-    	this.age=age;
+    	this.birthDate=birthDate;
     	this.genre=genre;
     	this.experience=experience;
     	this.dni=dni;
